@@ -1,6 +1,22 @@
-# test_calculator_app.py
+# src/cal_test.py
 import pytest
-from calculator_app import add, subtract, multiply, divide
+
+# Define the functions here so pytest can test them
+def add(x, y): 
+    return x + y
+
+def subtract(x, y): 
+    return x - y
+
+def multiply(x, y): 
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        raise ValueError("Division by zero is not allowed")
+    return x / y
+
+# ------------------ Tests ------------------
 
 def test_add():
     assert add(2, 3) == 5
@@ -22,7 +38,12 @@ def test_divide_by_zero():
     with pytest.raises(ValueError):
         divide(5, 0)
 
-#test for invalid input 
-def invalid_input():
+def test_invalid_inputs():
     with pytest.raises(TypeError):
-        add("String")
+        add("String", 5)
+    with pytest.raises(TypeError):
+        subtract(10, "b")
+    with pytest.raises(TypeError):
+        multiply(None, 3)
+    with pytest.raises(TypeError):
+        divide("x", 2)
