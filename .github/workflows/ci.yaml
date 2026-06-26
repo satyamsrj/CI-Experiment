@@ -24,4 +24,5 @@ jobs:
           pip install pytest streamlit
 
       - name: Run tests
-        run: pytest cal_test.py   # ✅ correct run syntax
+        run: pytest src/cal_test.py   # ✅ correct run syntax
+        
